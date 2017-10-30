@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P03.Text_Filter
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string sample = Console.ReadLine();
+            string[] sampleWords = sample.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            string text = Console.ReadLine();
+            for (int i = 0; i < sampleWords.Length; i++)
+            {
+                string chekerWord = sampleWords[i];
+                int index = -1;
+                while (true)
+                {
+                    index = text.IndexOf(sample, index + 1);
+                    text = text.Replace(chekerWord,new string ('*', chekerWord.Length));
+                    if (index == -1)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            Console.WriteLine(text);
+        }
+    }
+}
